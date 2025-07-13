@@ -15,13 +15,13 @@ default_path = "data/dryanatolia_sample_grid_2023.nc"
 
 if uploaded_file is not None:
     try:
-        uploaded_file.seek(0)
+        uploaded_file.seek(0)  # Dosya içeriğini başa al
         ds = xr.open_dataset(io.BytesIO(uploaded_file.read()), engine="scipy")
     except Exception as e:
         st.error(f"File could not be opened: {e}")
         st.stop()
 else:
-    st.info("Please upload a NetCDF (.nc) file to begin.")
+    st.info("Please upload a .nc file to begin.")
     st.stop()
     
 
