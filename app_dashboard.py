@@ -16,7 +16,7 @@ default_path = "data/dryanatolia_sample_grid_2023.nc"
 if uploaded_file is not None:
     try:
         uploaded_file.seek(0)
-        ds = xr.open_dataset(io.BytesIO(uploaded_file.read()), engine="h5netcdf")
+        ds = xr.open_dataset(io.BytesIO(uploaded_file.read()), engine="scipy")
     except Exception as e:
         st.error(f"File could not be opened: {e}")
         st.stop()
