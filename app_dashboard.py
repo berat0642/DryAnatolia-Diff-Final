@@ -17,7 +17,7 @@ default_path = "data/dryanatolia_sample_grid_2023.nc"
 col1, col2 = st.columns(2)
 
 if uploaded_file:
-    ds = xr.open_dataset(uploaded_file)
+    ds = xr.open_dataset(io.BytesIO(uploaded_file.read()))
 else:
     if os.path.exists(default_path):
         ds = xr.open_dataset(default_path)
