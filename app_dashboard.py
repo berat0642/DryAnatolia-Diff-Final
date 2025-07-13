@@ -13,6 +13,18 @@ st.title("📊 DryAnatolia-Diff: Kuraklık Dashboard")
 uploaded_file = st.file_uploader("NetCDF dosyanızı yükleyin (.nc)", type=["nc"])
 default_path = "data/dryanatolia_sample_grid_2023.nc"
 
+if uploaded_file is not None:
+    try:
+        uploaded_file.seek(0)
+        ds = xr.open_dataset(io.BytesIO(uploaded_file.read()), engine="netcdf4")
+    except Exception as e:
+        st.error(f"File could not be opened: {e}")
+        st.stop()
+else:
+    st.info("Please upload a NetCDF (.nc) file to begin.")
+    st.stop()
+
+
 # Layout: 2 kolon (sol: animasyon, sağ: detay harita)
 col1, col2 = st.columns(2)
 
