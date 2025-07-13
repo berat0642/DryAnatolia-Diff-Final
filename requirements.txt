@@ -2,3 +2,4 @@ streamlit
 xarray
 matplotlib
 imageio
+netcdf4
