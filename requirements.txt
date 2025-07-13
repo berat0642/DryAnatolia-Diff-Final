@@ -2,4 +2,4 @@ streamlit
 xarray
 matplotlib
 imageio
-netcdf4
+h5netcdf
